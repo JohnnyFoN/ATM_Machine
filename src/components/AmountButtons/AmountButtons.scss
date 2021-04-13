@@ -1,0 +1,28 @@
+.allButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .leftButtons{
+        display: flex;
+        flex-direction: column;
+    }
+    .rightButtons{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+button{
+    border-radius: 18px;
+    margin: 5px 20px 10px 20px;
+    border-color: #802BB1;
+    background-color: #D1D7E0;
+    padding: 11px;
+    width: 180px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2D283E;
+    outline: none;
+    cursor: pointer;
+}
