@@ -6,9 +6,9 @@ import AmountButtons from './components/AmountButtons';
 import EndOfTransaction from './components/EndOfTransaction';
 
 // BILLS 500 1000 2000 5000
-// let fiveHundredes = [500,500,500,500,500,500,500,500,500,500];              // 5000
-// let oneThousands = [1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];     //10000
-// let twoThousands = [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000];     //20000
+let fiveHundredes = [500,500,500,500,500,500,500,500,500,500];                // 5000
+let oneThousands = [1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];       //10000
+let twoThousands = [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000];       //20000
 let fiveThousands = [5000,5000,5000,5000,5000,5000,5000,5000,5000,5000];      //50000
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   const [showAmounts, setShowAmounts] = useState(false);
   const [showEndOfTransaction, setShowEndOfTransaction] = useState(false);
   const [showCardNumberAndPin, setShowCardNumberAndPin] = useState(true);
-  const [amountOfMoneyInTheATM, setAmountOfMoneyInTheATM] = useState(10000);
+  const [amountOfMoneyInTheATM, setAmountOfMoneyInTheATM] = useState(24500);
   let [amountBills, setAmountBills] = useState([])
 
   // EXISTING CARDS
@@ -29,6 +29,7 @@ function App() {
     {number: 1, PIN: 1, cardAmount: 30000}
   ];
    
+  // BILLS FOR USER
   let amountBillsArr = []
 
   const verifyCard = (cardNumber, PINCode) => {  
@@ -54,20 +55,32 @@ function App() {
     setShowOptions(false);
   }
 
-  const check5000 = (amount) =>{
+  const checkBillsInATM = (amount, apoen, billArray) =>{
     setDisplayMessage('');
-      while(amount >= 5000 && fiveThousands.length > 0){
-        fiveThousands.pop();
-        amountBillsArr.push(5000);
-        chosenCard.cardAmount -= 5000;
-        amount-=5000;
+    while(amount >= apoen && billArray.length > 0){
+      billArray.pop();
+      amountBillsArr.push(apoen);
+      chosenCard.cardAmount -= apoen;
+      amount-=apoen;
+    }
+    if(amount !== 0){
+      switch(apoen){
+        case 5000:
+          checkBillsInATM(amount, 2000, twoThousands);
+          break;
+        case 2000:
+          checkBillsInATM(amount, 1000, oneThousands);
+          break;
+        case 1000:
+          checkBillsInATM(amount, 500, oneThousands);
+          fiveHundredes.pop();
+          break;
       }
-      if(amount !== 0){
-          // check2000(amount)
-      }
-      else{
-          console.log(`Take your ${amountBillsArr.reduce((a,b)=>a+b)} in bills: ${amountBillsArr}`);
-          amountBills = []
+      
+    }
+    else{
+      console.log(`Take your ${amountBillsArr.reduce((a,b)=>a+b)} in bills: ${amountBillsArr}`);
+      amountBills = []
     }
   }
 
@@ -129,11 +142,16 @@ function App() {
       setDisplayMessage(`Not enough money in the ATM. Disposable: ${amountOfMoneyInTheATM}`);
       return;
     }
-    check5000(amount);              
+    checkBillsInATM(amount,5000,fiveThousands);              
     setAmountOfMoneyInTheATM(amountOfMoneyInTheATM - amount);
     setShowAmounts(false);
     setShowEndOfTransaction(true);
     setAmountBills(amountBillsArr)
+    console.log('Card amount', chosenCard.cardAmount);
+    console.log('5000 bills', fiveThousands.length);
+    console.log('2000 bills', twoThousands.length);
+    console.log('500 bills', fiveHundredes.length);
+    console.log('atm money: ',amountBills)
   }
 
   return (

@@ -6,7 +6,7 @@ export default ({withdrawMoneyFromCard}) =>{
     }
 
     const leftButtonApoens = [500,1000,2000,5000]
-    const rightButtonApoens = [10000, 20000, 30000]
+    const rightButtonApoens = [10000, 20000, 24500]
 
     const renderButtons = (apoens) => {
         return apoens.map((apoen, index) => (
