@@ -1,0 +1,33 @@
+h3{
+    color: #802BB1;
+}
+
+.amountInputField{
+    margin: 10px 20px 10px 20px;
+    padding: 11px;
+    border-radius: 10px;
+    border-color: #802BB1;
+    background-color: #D1D7E0;
+    border-width: 4px;
+    width: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    color: #2D283E;
+}:focus{
+    outline: none;
+}
+
+.submitAmount{
+    border-radius: 18px;
+    margin: 5px 20px 10px 20px;
+    border-color: #802BB1;
+    background-color: #802BB1;
+    padding: 11px;
+    width: 180px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color:#D1D7E0;
+    outline: none;
+    cursor: pointer;
+}

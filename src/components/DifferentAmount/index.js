@@ -1,9 +1,10 @@
-export default () =>{
-    return(
-        <div>
-            <h1>Insert your amount:</h1>
-            <input type='text' placeholder='Amount'></input>
-            <button>Confirm</button>
-        </div>
-    )
-}
+import { React } from 'react';
+import './DifferentAmount.scss';
+
+export default () => (
+  <div>
+    <h3>Insert your amount:</h3>
+    <input className="amountInputField" type="text" placeholder="Amount" />
+    <button className="submitAmount" type="submit">Confirm</button>
+  </div>
+);

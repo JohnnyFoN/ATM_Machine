@@ -1,27 +1,25 @@
-import './AmountButtons.scss'
+import { React } from 'react';
+import './AmountButtons.scss';
 
-export default ({withdrawMoneyFromCard}) =>{
-    const getWithdrawMoneyFromCardCallback = (amount) => {
-        return ()=>withdrawMoneyFromCard(amount);
-    }
+export default ({ withdrawMoneyFromCard, showDifferentAmountInput }) => {
+  const leftButtonApoens = [500, 1000, 2000, 5000];
+  const rightButtonApoens = [10000, 20000, 24500];
+  const getWithdrawMoneyFromCardCallback = (amount) => () => withdrawMoneyFromCard(amount);
+  const getShowDifferentAmountInput = () => showDifferentAmountInput();
 
-    const leftButtonApoens = [500,1000,2000,5000]
-    const rightButtonApoens = [10000, 20000, 24500]
+  const renderButtons = (apoens) => apoens.map((apoen) => (
+    <button className="amountOptionButton" type="submit" key={apoen} onClick={getWithdrawMoneyFromCardCallback(apoen)}>{apoen}</button>
+  ));
 
-    const renderButtons = (apoens) => {
-        return apoens.map((apoen, index) => (
-            <button key={index} onClick={getWithdrawMoneyFromCardCallback(apoen)}>{apoen}</button>
-        ) )
-    }
-    return(
-        <div className='allButtons'>
-            <div className='leftButtons'>
-               {renderButtons(leftButtonApoens)}
-            </div>
-            <div className='rightButtons'>
-               {renderButtons(rightButtonApoens)}
-                <button>Different amount</button>
-            </div>
+  return (
+    <div className="allButtons">
+      <div className="leftButtons">
+        {renderButtons(leftButtonApoens)}
       </div>
-    )
-}
+      <div className="rightButtons">
+        {renderButtons(rightButtonApoens)}
+        <button className="amountOptionButton" type="submit" onClick={getShowDifferentAmountInput}>Different amount</button>
+      </div>
+    </div>
+  );
+};
