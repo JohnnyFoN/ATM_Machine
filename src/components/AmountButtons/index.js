@@ -8,7 +8,7 @@ export default ({ withdrawMoneyFromCard, showDifferentAmountInput }) => {
   const getShowDifferentAmountInput = () => showDifferentAmountInput();
 
   const renderButtons = (apoens) => apoens.map((apoen) => (
-    <button className="amountOptionButton" type="submit" key={apoen} onClick={getWithdrawMoneyFromCardCallback(apoen)}>{apoen}</button>
+    <button className="amountOptionButton" type="submit" key={apoens[apoen]} onClick={getWithdrawMoneyFromCardCallback(apoen)}>{apoen}</button>
   ));
 
   return (
@@ -18,7 +18,7 @@ export default ({ withdrawMoneyFromCard, showDifferentAmountInput }) => {
       </div>
       <div className="rightButtons">
         {renderButtons(rightButtonApoens)}
-        <button className="amountOptionButton" type="submit" onClick={getShowDifferentAmountInput}>Different amount</button>
+        <button className="differentAmountOptionButton" type="submit" onClick={getShowDifferentAmountInput}>Different amount</button>
       </div>
     </div>
   );

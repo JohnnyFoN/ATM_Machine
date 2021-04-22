@@ -82,7 +82,7 @@ function App() {
           fiveHundredes.pop();
           break;
         default:
-          console.log('Done.');
+          console.log('Done.'); // improve this
       }
     } else {
       console.log(`Take your ${billsForUser.reduce((a, b) => a + b)} in bills: ${billsForUser}`);
@@ -105,6 +105,7 @@ function App() {
     checkBillsInATM(amount, 5000, fiveThousands);
     setAmountOfMoneyInTheATM(amountOfMoneyInTheATM - amount);
     setShowAmounts(false);
+    setShowDifferentAmount(false);
     setShowEndOfTransaction(true);
     setAmountBills(billsForUser);
   };
@@ -123,7 +124,7 @@ function App() {
 
       {showEndOfTransaction ? (<EndOfTransaction bills={amountBills} />) : null}
 
-      {showDifferentAmount ? (<DifferentAmount />) : null}
+      {showDifferentAmount ? (<DifferentAmount withdrawMoneyFromCard={withdrawMoneyFromCard} />) : null}
     </div>
   );
 }
