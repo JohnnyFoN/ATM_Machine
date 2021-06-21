@@ -23,6 +23,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-param-reassign": 0,
     "no-shadow": 0,
-    "react/no-array-index-key": 0
+    "react/no-array-index-key": 0,
+    "no-plusplus": 0,
   },
 };

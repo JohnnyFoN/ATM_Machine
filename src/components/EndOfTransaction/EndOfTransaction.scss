@@ -9,13 +9,13 @@ h3{
 }
 
 .bill{
-    margin-top: 5px;
+    margin: 5px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 75px;
     height: 35px;
-    flex-direction: row;
     border: solid green 2px;
     background-color: lightgreen;
     color: black;

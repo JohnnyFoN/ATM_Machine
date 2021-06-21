@@ -8,11 +8,15 @@ export default ({ bills }) => {
     setShowBills(true);
   };
 
-  const renderMoney = (bills) => bills.map((bill) => (
-    <div key={bills[bill]} className="bill">
-      {bill}
-    </div>
-  ));
+  const renderMoney = (bills) => bills.map((bill) => {
+    console.log('one bill', typeof bill);
+    console.log('bills', typeof bills);
+    return (
+      <div className="bill" key={bills[bill]}>
+        {bill}
+      </div>
+    );
+  });
 
   return (
     <div>
